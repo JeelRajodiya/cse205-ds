@@ -18,3 +18,7 @@ class Solution:
         ans = []
         self.recursion(ans, "", 0, 0, n)
         return ans
+
+
+s = Solution()
+s.generateParenthesis(5)
