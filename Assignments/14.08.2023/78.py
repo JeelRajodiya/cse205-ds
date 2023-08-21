@@ -1,11 +1,15 @@
 from typing import List
 
+count = 0
+
 
 class Solution:
 
     def subs(self, nums: List[int], i: int, tempArr: List[int],
              arr: List[int]):
-
+        global count
+        count += 1
+        print(f"loop: {count}, i = {i}, tempArr={tempArr}")
         # print(tempArr, i)
         if i == len(nums):
             arr.append(tempArr.copy())
@@ -24,4 +28,4 @@ class Solution:
 
 
 s = Solution()
-print(s.subsets([1, 2, 5, 5]))
+print(s.subsets([1, 2, 3]))
