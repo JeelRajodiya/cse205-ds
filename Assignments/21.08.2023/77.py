@@ -1,25 +1,20 @@
+from typing import List
+
+
 class Solution:
 
-    def subs(self, nums: List[int], i: int, tempArr: List[int],
-             arr: List[int]):
-
-        # print(tempArr, i)
-        if i == len(nums):
-            arr.append(tempArr.copy())
+    def recursion(self, ans: List[str], s: str, l: int, r: int, n: int):
+        if (l + r == 2 * n):
+            ans.append(s)
             return
+        if (l < n):
 
-        self.subs(nums, i + 1, tempArr, arr)
-        tempArr.append(nums[i])
+            self.recursion(ans, s + "(", l + 1, r, n)
+        if (r < l):
 
-        self.subs(nums, i + 1, tempArr, arr)
-        tempArr.pop()
+            self.recursion(ans, s + ")", l, r + 1, n)
 
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        arr = []
-        self.subs(nums, 0, [], arr)
-        return arr
-
-    def combine(self, n: int, k: int) -> List[List[int]]:
-        arr = list(range(1, n + 1))
-        arr = list(filter(lambda a: len(a) == k, self.subsets(arr)))
-        return arr
+    def generateParenthesis(self, n: int) -> List[str]:
+        ans = []
+        self.recursion(ans, "", 0, 0, n)
+        return ans
