@@ -1,9 +1,9 @@
-from typing import List
+from typing import Any, List
 
 
 class Solution:
 
-    def recursion(self, nums: List[int], mask: List[any], ans: List[List[int]],
+    def recursion(self, nums: List[int], mask: List[Any], ans: List[List[int]],
                   it: int):
 
         if (it == len(nums)):
