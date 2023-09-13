@@ -25,18 +25,17 @@ class Solution:
     def isValid(self, s: str) -> bool:
 
         pairs = {")": "(", "]": "[", "}": "{"}
-        toAdd = "({["
-        myStack = Stack()
-        if len(s) % 2 != 0:
-            return False
-        for i in s:
-            if i in toAdd:
-                myStack.add(i)
-            else:
-                popped = myStack.pop()
 
-                if popped != pairs[i] or popped == None:
+        myStack = Stack()
+
+        for i in s:
+            if i in pairs:
+                if myStack.len and myStack.peek() == pairs[i]:
+                    myStack.pop()
+                else:
                     return False
+            else:
+                myStack.add(i)
 
         if myStack.len == 0:
             return True
